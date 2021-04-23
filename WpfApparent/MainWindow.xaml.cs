@@ -77,6 +77,7 @@ namespace WpfApparent
         byte r = 0;
         byte g = 0;
         byte b = 0;
+        bool s = false;
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -98,6 +99,7 @@ namespace WpfApparent
             hotKeyDic.Add("G-", GlobalAddAtom("G-"));
             hotKeyDic.Add("B+", GlobalAddAtom("B+"));
             hotKeyDic.Add("B-", GlobalAddAtom("B-"));
+            hotKeyDic.Add("S", GlobalAddAtom("S"));
             RegisterHotKey(wpfHwnd, hotKeyDic["F3"], KeyModifiers.None, (int)Keys.F3);
             RegisterHotKey(wpfHwnd, hotKeyDic["F4"], KeyModifiers.None, (int)Keys.F4);
             RegisterHotKey(wpfHwnd, hotKeyDic["R+"], KeyModifiers.Alt, (int)Keys.R);
@@ -106,6 +108,7 @@ namespace WpfApparent
             RegisterHotKey(wpfHwnd, hotKeyDic["G-"], KeyModifiers.Alt, (int)Keys.H);
             RegisterHotKey(wpfHwnd, hotKeyDic["B+"], KeyModifiers.Alt, (int)Keys.B);
             RegisterHotKey(wpfHwnd, hotKeyDic["B-"], KeyModifiers.Alt, (int)Keys.N);
+            RegisterHotKey(wpfHwnd, hotKeyDic["S"], KeyModifiers.Alt, (int)Keys.S);
         }
 
 
@@ -157,6 +160,12 @@ namespace WpfApparent
                         {
                             if (b <= 250) b += 5;
                             Background = new SolidColorBrush(Color.FromArgb(liangdu, r, g, b));
+                        }
+                        else if (sid == hotKeyDic["S"])
+                        {
+                            s = !s;
+                            if (s) { Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)); }
+                            else { Background = new SolidColorBrush(Color.FromArgb(liangdu, r, g, b)); }
                         }
                         handled = true;
                         break;

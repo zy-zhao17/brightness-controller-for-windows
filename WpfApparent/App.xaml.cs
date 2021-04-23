@@ -44,17 +44,17 @@ namespace WpfApparent
             refreshItem.Click += refreshItem_Click;
 
 
-            MenuItem closeItem = new MenuItem();
-            closeItem.Text = "Close";
-            closeItem.Click += new EventHandler(delegate { this.Shutdown(); });
+            MenuItem exitItem = new MenuItem();
+            exitItem.Text = "Exit";
+            exitItem.Click += new EventHandler(delegate { this.Shutdown(); });
 
             MenuItem helpItem = new MenuItem();
             helpItem.Text = "Help";
             helpItem.Click += helpItem_Click;
 
             menu.MenuItems.Add(refreshItem);
-            menu.MenuItems.Add(closeItem);
             menu.MenuItems.Add(helpItem);
+            menu.MenuItems.Add(exitItem);
 
             trayIcon.ContextMenu = menu;    //设置NotifyIcon的右键弹出菜单
         }
